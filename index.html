@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Stroke Prediction</title>
+     <!-- Favicon from Free Favicon-->
+     <link rel="shortcut icon" href="favicon.ico" /> 
+
+    <!-- CDNs -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+    <!-- Local CSS -->
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css" />
+
+    <!--[if IE]>
+    <script src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+    <!--[if lte IE 7]>
+    <script src="js/IE8.js" type="text/javascript"></script><![endif]-->
+    <!--[if lt IE 7]>
+
+    <link rel="stylesheet" type="text/css" media="all" href="css/ie6.css"/><![endif]-->
+</head>
+<body id ="index" class="home">
+
+  <header id="banner" class="body">
+    <h1><a href="#">Stroke Prediction</a></h1>
+
+    <nav><ul>
+      <li class="active"><a href="/">home</a></li>
+      <li><a href="/about">about</a></li>
+    </ul></nav>
+
+  </header><!-- /#banner -->
+
+  <aside id="featured" class="body"><article>
+    <figure>
+      <img src="../static/images/about_stroke.jpeg" alt="About Stroke" />
+    </figure>
+    <hgroup>
+      <h2>Featured Article</h2>
+      <h3><a href="#">Center of Disease Control and Prevention</a></h3>
+    </hgroup>
+    <p>Stroke is caused by a disruption of blood flow to a part of the brain.
+    Stroke results in lost or impaired function.   
+    Stroke is preventable and treatable.
+    <a href="https://www.cdc.gov/stroke/about.htm" rel="external" target="_blank">Stroke Overview</a> and <a href="https://www.cdc.gov/stroke/maps_data.htm" rel="external" target="_blank">Stroke Prevention</a></p>
+
+  </article></aside><!-- /#featured -->
+
+  <section id="content" class="body">
+
+    <ol id="posts-list" class="hfeed">
+  
+      <li><article class="hentry">  
+        <header>
+          <h2 class="entry-title"><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Are you currently at risk of having a stroke?</a></h2>
+        </header>
+        <p>A working machine learning model to predict a chance of stroke is below.</p>
+        <p>[Please note that this calculation is an estimate only - please see your doctor for an accurate diagnosis, as there are many other contributing factors.] </p>
+      
+        <div class="entry-content">
+          <p>Please fill out all of the information and the model's predicated result will display.</p>
+  
+        </div><!-- /.entry-content -->
+      </article></li>
+        <li><article class="hentry">
+          
+          <h2 class="entry-title"><a href="#" rel="bookmark" title="Permalink MLStrokeApp form">Inputs</a></h2>
+            <form method=post enctype=multipart/form-data>
+              <div class="form-group">
+                {% if feedback %}
+                  <br>
+                  <h2 class="text-warning float-left">{{ feedback }}</h2>
+                  <br>
+                {% endif %} 
+              </div>
+              <br>
+              <div class="form-group">
+                <label for="gender">Biological Gender:</label>
+                <select name="gender" id="gender" >
+                  <option value="1">Male</option>
+                  <option value="0">Female</option>
+                </select>
+              </div>
+             <div class="form-group">
+                <label for="age">Age (years):</label>
+                <input type="number" id="age" min="1.0" max="125" name="age" step="any">
+             </div>
+             <div class="form-group">
+                <label for="hyper_tension">Hypertension:</label>
+                <select name="hyper_tension" id="hyper_tension" >
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="heart_disease">Heart disease:</label>
+                <select name="heart_disease" id="heart_disease">
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="ever_married">Ever married:</label>
+                <select name="ever_married" id="ever_married">
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="work_type">Work types:</label>
+                <select name="work_type" id="work_type">
+                  <option value="2">Private sector</option>
+                  <option value="3">Self-employed</option>
+                  <option value="0">Government job</option>
+                  <option value="4">Children</option>
+                  <option value="1">Never worked</option>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="Residence_type">Residence type:</label>
+                <select name="Residence_type" id="Residence_type">
+                  <option value="1">Urban</option>
+                  <option value="0">Rural</option>
+                </select>
+             </div>
+             <div class="form-group">
+                <label for="avg_glucose_level">Average glucose level (mg/dL):</label>
+                <a href="https://www.diabetescarecommunity.ca/living-well-with-diabetes-articles/blood-sugar-levels-in-canada/?gclid=EAIaIQobChMIg6SOgcT49QIV5f7jBx1cYgLJEAMYASAAEgJ1t_D_BwE" rel="external" target="_blank">Diabetic Care Community: Glucose levels</a>
+                
+                <input type="number" id="avg_glucose_level" min="20" max="300" name="avg_glucose_level" step="any">
+             </div>
+             <div class="form-group">
+                <label for="bmi">Body mass index (BMI):</label>
+                <a href="https://www.diabetes.ca/managing-my-diabetes/tools---resources/body-mass-index-(bmi)-calculator" rel="external" target="_blank">Diabetes Canada BMI Calculator</a>
+                
+                <input type="number" id="bmi" min="1" max="100" name="bmi" step="any">
+             </div>
+             <div class="form-group">
+                <label for="smoking_status">Smoking status:</label>
+                <select name="smoking_status" id="smoking_status">
+                  <option value="1">Formerly smoked</option>
+                  <option value="2">Never smoked</option>
+                  <option value="3">Smokes</option>
+                  
+                </select>
+             </div>
+            
+              <input type=submit value=Compute>
+            </form>
+        </article></li>
+      
+  
+      <li><article class="hentry">
+        <header>
+          <h2 class="entry-title"><a href="#" rel="bookmark" title="Permalink to this POST TITLE">Disclaimer</a></h2>
+          <p>This risk assessment does not provide a medical service of any kind. The information contained in the risk assessment is for your personal use only and is not intended to diagnose, cure, mitigate, treat, or prevent disease or other conditions and is not intended to provide a determination of assessment of your state of health. Always consult a licensed healthcare professional such as your family physician or your specialist to make healthcare decisions or before starting any diet or exercise program. The creators of this application makes no warranties, expressed or implied, in connection with the risk assessment or the performance of the risk assessment, nor shall the site's creators be held responsible or liable for any costs or damages related to use of the risk assessment or any information provided therefrom. 
+          </p>
+
+        </header>
+      </article></li>
+    </ol><!-- /#posts-list -->
+  
+  </section><!-- /#content -->
+
+    
+    
+  <footer id="contentinfo" class="body">
+    <address id="about" class="vcard body">
+      <span class="primary">
+        <strong><a href="#" class="fn url">Stroke Prediction 2022</a></strong>
+
+        <span class="role">A working machine learning model to test.</span>
+      </span><!-- /.primary -->
+
+      <img src="../static/images/brainpngaaa.png" alt="Machine Learning for Stroke" class="photo" />
+      
+
+    </address><!-- /#about -->
+    
+  </footer><!-- /#contentinfo -->
+
+
+    <!-- CDNs -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
