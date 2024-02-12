@@ -306,7 +306,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
 #about .primary {float: left; width: 165px;}
 #about .primary strong {color: #C64350; display: block; font-size: 1.286em;}
-#about .photo {float: left; margin: 5px 20px;}
+#about .photo {float: left; margin: 5px 1px; }
 
 #about .url:link, #about .url:visited {text-decoration: none;}
 
