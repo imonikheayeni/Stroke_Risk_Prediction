@@ -2,6 +2,9 @@ import pandas as pd
 import pickle
 from flask import Flask, jsonify, request, render_template
 import joblib
+from xgboost import XGBClassifier
+xgb_model = XGBClassifier()
+
 
 
 app = Flask(__name__)
