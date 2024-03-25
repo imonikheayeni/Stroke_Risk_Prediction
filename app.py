@@ -6,10 +6,11 @@ import joblib
 
 app = Flask(__name__)
 
+
 global model
 
 # load the model from disk
-model = pickle.load(open("model.pkl", 'rb'))
+model = pickle.load(open("xgb_model.pkl", 'rb'))
 
 
 @app.route('/', methods=['GET', 'POST'])
