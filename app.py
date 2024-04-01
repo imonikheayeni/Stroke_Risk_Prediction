@@ -6,11 +6,7 @@ from xgboost import XGBClassifier
 xgb_model = XGBClassifier()
 
 
-
-app = Flask(__name__)
-
-
-global model
+app = Flask(__name__)   #initialize flask app
 
 # load the model from disk
 model = pickle.load(open("xgb_model.pkl", 'rb'))
