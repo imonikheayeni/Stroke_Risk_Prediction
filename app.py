@@ -72,10 +72,10 @@ def index():
             #print(arr)
             feedback = "Sorry, no results at this time."
             try:
-                if float(arr) >= 0.5:
-                    feedback = "\U0001f92d" + "Model predicted: At risk."
+                if float(arr) < 1:
+                    feedback = "Model predicted: At risk."
                 else:
-                    feedback = "\U0001f600" + " Model predicted: Not at risk."
+                    feedback = " Model predicted: Not at risk."
             except:
                 feedback = "Sorry, no results at this time. Please try again."
            
